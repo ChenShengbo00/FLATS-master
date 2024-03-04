@@ -1,0 +1,5 @@
+AllGestureWiimoteY 14 0 50
+AllGestureWiimoteY 5 53 153
+AllGestureWiimoteY 4 159 259
+AllGestureWiimoteY 4 53 153
+AllGestureWiimoteY 4 0 50

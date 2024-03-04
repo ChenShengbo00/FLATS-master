@@ -1,0 +1,5 @@
+StarLightCurves 75 6 109
+StarLightCurves 25 483 688
+StarLightCurves 25 348 451
+StarLightCurves 25 921 1024
+StarLightCurves 24 6 109

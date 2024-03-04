@@ -1,0 +1,5 @@
+EOGHorizontalSignal 14 887 1012
+EOGHorizontalSignal 5 121 371
+EOGHorizontalSignal 5 1012 1137
+EOGHorizontalSignal 4 425 550
+EOGHorizontalSignal 4 121 371

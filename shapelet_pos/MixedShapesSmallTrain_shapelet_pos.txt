@@ -1,0 +1,5 @@
+MixedShapesSmallTrain 44 6 109
+MixedShapesSmallTrain 15 921 1024
+MixedShapesSmallTrain 14 6 109
+MixedShapesSmallTrain 14 483 688
+MixedShapesSmallTrain 15 109 314

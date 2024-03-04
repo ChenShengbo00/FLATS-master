@@ -1,0 +1,5 @@
+EOGVerticalSignal 14 887 1012
+EOGVerticalSignal 5 121 371
+EOGVerticalSignal 5 1012 1137
+EOGVerticalSignal 4 425 550
+EOGVerticalSignal 4 121 371

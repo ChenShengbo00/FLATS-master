@@ -1,0 +1,5 @@
+ElectricDevices 71 24 44
+ElectricDevices 24 4 24
+ElectricDevices 24 82 92
+ElectricDevices 24 72 82
+ElectricDevices 23 48 68

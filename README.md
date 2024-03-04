@@ -1,0 +1,16 @@
+python3.8 tsadv.py 
+--lr=0.0005
+--gamma=0.997
+--local_train_period=1
+--eps=1
+--prox_attack=False
+--cuda
+--num_nets=100
+--fl_round=300
+--part_nets_per_round=20
+--dataset=MelbournePedestrian
+--attacker_pool_size=5
+--defense_method=ndc
+--model=resnet
+--attackmathed=AttackerOnepoint
+--fl_mode=fixed-pool
