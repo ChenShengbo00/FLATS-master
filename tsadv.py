@@ -253,16 +253,16 @@ if __name__ == "__main__":
     # let's remain a copy of the global model for measuring the norm distance:
     vanilla_model = copy.deepcopy(net_avg)
 
-    ######初始化保存模型
-    for global_user_idx in range(args.num_nets):
-        save_model_path = "./client_model/00/" + str(global_user_idx) + "_round_model.pth"
-        torch.save(net_avg.state_dict(), save_model_path)
-        save_model_path = "./client_model/01/" + str(global_user_idx) + "_round_model.pth"
-        torch.save(net_avg.state_dict(), save_model_path)
-        save_model_path = "./client_model/02/" + str(global_user_idx) + "_round_model.pth"
-        torch.save(net_avg.state_dict(), save_model_path)
-        save_model_path = "./client_model/03/" + str(global_user_idx) + "_round_model.pth"
-        torch.save(net_avg.state_dict(), save_model_path)
+    # ######初始化保存模型
+    # for global_user_idx in range(args.num_nets):
+    #     save_model_path = "./client_model/00/" + str(global_user_idx) + "_round_model.pth"
+    #     torch.save(net_avg.state_dict(), save_model_path)
+    #     save_model_path = "./client_model/01/" + str(global_user_idx) + "_round_model.pth"
+    #     torch.save(net_avg.state_dict(), save_model_path)
+    #     save_model_path = "./client_model/02/" + str(global_user_idx) + "_round_model.pth"
+    #     torch.save(net_avg.state_dict(), save_model_path)
+    #     save_model_path = "./client_model/03/" + str(global_user_idx) + "_round_model.pth"
+    #     torch.save(net_avg.state_dict(), save_model_path)
 
 
     starttime = time.time()
