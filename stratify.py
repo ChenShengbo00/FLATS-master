@@ -73,89 +73,31 @@ def shapelet_transform(run_tag):
     plt.savefig('./shapelet_fig/' + run_tag + '_shapelet.pdf')
     # plt.show()
 
-def stratify_datasets(dataname):
-    # 用于把test数据分层采样为eval和unseen数据集
-    data_path = './data/UCR/' + dataname + '/' + dataname
-    train_data = np.loadtxt(data_path + '_TRAIN.txt')
-    test_data = np.loadtxt(data_path + '_TEST.txt')
-    data = np.vstack((train_data, test_data))
-    print('data: ', test_data.shape, train_data.shape, data.shape)
-    size = data.shape[0]
-    test_count = Counter(data[:, 0])
-    print("class: ", len(test_count.keys()))
-    # 获取对应类别的下标
-    def findid(y, target):  # 类别：标签
-        index = []
-        for i, lab in enumerate(y):
-            if lab == target:
-                index.append(i)
-        return index
-    # 找出每一类的下标
-    indexes = []
-    for label in test_count.keys():
-        index = findid(data[:, 0], label)
-        # file.write(str(len(index)) + '\n')
-        # print(label, len(index))
-        index = random.sample(index, int(0.3*len(index))) # 随机选取40%的数据测试
-        indexes.extend(index)
-    if 0 not in test_count.keys():
-        data[:, 0] -= 1
-        print('limit label to [0,num_classes-1]')
-        num_classes = len(np.unique(data[:, 0]))
-        for i in range(data.shape[0]):
-            if data[i, 0] < 0:  # 标签小于0则重置为num_classes - 1
-                data[i, 0] = num_classes - 1
-    eval_data = data[indexes]
-    no_indexes = np.delete(np.arange(size), indexes)
-    # print(type(indexes))
-    # print(type(no_indexes))
-    traindataset = data[no_indexes]
-    '''
-    np.savetxt("a.txt", a, fmt="%d", delimiter=",") #改为保存为整数，以逗号分隔  
-    np.loadtxt("a.txt",delimiter=",") # 读入的时候也需要指定逗号分隔'''
-
-    np.savetxt(data_path+ '_TEST.txt', eval_data)
-    np.savetxt(data_path + '_TRAIN.txt', traindataset)
-    # print(type(eval_data))
-
-    # eval_data = np.loadtxt(data_path + '_eval.txt')
-    # unseen_data = np.loadtxt(data_path + '_unseen.txt')
-
-    print('testdata: ', data.shape)
-
-    print('test class num: ', test_count)
-    train_data = np.loadtxt(data_path + '_TRAIN.txt')
-    test_data = np.loadtxt(data_path + '_TEST.txt')
-    print('data after:test,train ', test_data.shape, train_data.shape)
-
 
 def stratify_attack_data(dataname):
-    # 用于生产某一类attack数据集
     data_path = './data/UCR/' + dataname + '/' + dataname
     data = np.loadtxt(data_path + '_TRAIN.txt')
     #data = np.loadtxt(data_path + '_TEST.txt')
     size = data.shape[0]
     test_count = Counter(data[:, 0])
     print(test_count)
-    # 获取对应类别的下标
     def findid(y, target):  # 类别：标签
         index = []
         for i, lab in enumerate(y):
             if lab == target:
                 index.append(i)
         return index
-    # 找出每一类的下标
-    label = 0
-    index = findid(data[:, 0], label)
+    index = list(np.arange(size))
+    #index = random.shuffle(list(np.arange(size)))
+
     # file.write(str(len(index)) + '\n')
     # print(label, len(index))
     # ind_att = random.sample(index, int(0.05*len(index))) #
-    num_att = int(min(0.5*len(index), 0.03 * data.shape[0]))
+    num_att = int(0.05 * data.shape[0])
     ind_att = random.sample(index, num_att)  #
+    print(ind_att)
     attack_data = data[ind_att]
     no_attack = np.delete(np.arange(size), ind_att)
-    print(type(ind_att))
-    print(type(no_attack))
     eval_data = data[no_attack]
     '''
     np.savetxt("a.txt", a, fmt="%d", delimiter=",") #改为保存为整数，以逗号分隔  
@@ -167,42 +109,14 @@ def stratify_attack_data(dataname):
 
     # eval_data = np.loadtxt(data_path + '_eval.txt')
     # unseen_data = np.loadtxt(data_path + '_unseen.txt')
-
     print('data: ', data.shape)
-
     print('train: attack data: ', eval_data.shape, attack_data.shape)
 
 if __name__ == '__main__':
-    # ECG, Sensor, Device, Spectro
-    '''name = [  # ECG+Sensor:24
-        'Car', 'ChlorineConcentration', 'CinCECGTorso',
-        'Earthquakes', 'ECG5000', 'ECG200', 'ECGFiveDays',
-        'FordA', 'FordB',
-        'InsectWingbeatSound', 'ItalyPowerDemand',
-        'Lightning2', 'Lightning7',
-        'MoteStrain',
-        'NonInvasiveFetalECGThorax1', 'NonInvasiveFetalECGThorax2',
-        'Plane', 'Phoneme',
-        'SonyAIBORobotSurface1', 'SonyAIBORobotSurface2', 'StarLightCurves',
-        'Trace', 'TwoLeadECG',
-        'Wafer',
-        'AllGestureWiimoteX', 'AllGestureWiimoteY', 'AllGestureWiimoteZ',  # ECG+Sensor+HRM:18
-        'FreezerRegularTrain', 'FreezerSmallTrain',
-        'PickupGestureWiimoteZ', 'PigAirwayPressure', 'PigArtPressure', 'PigCVP',
-        'ShakeGestureWiimoteZ',
-        'Fungi',
-        'Crop''ElectricDevices''KeplerLightCurves''NonInvasiveFetalECGThorax1'
-        'GesturePebbleZ1', 'GesturePebbleZ2',
-        'DodgerLoopDay', 'DodgerLoopWeekend', 'DodgerLoopGame','UWaveGestureLibraryX'
-        'EOGHorizontalSignal', 'EOGVerticalSignal']
-        'ShapesAll','SwedishLeaf' 'StarLightCurves' 'TwoPatterns''MelbournePedestrian''MixedShapesSmallTrain'
-        '''
-    names = ['ShapesAll']
+    '''name = 'ECG5000','ShapesAll','SwedishLeaf' 'StarLightCurves' 'TwoPatterns''MelbournePedestrian'''
+    names = ['MelbournePedestrian']
 
     for name in names:
-        print('######## Start %s stratify stratify #####' % name)
-        #stratify_datasets(name)
-        #labels_datasets(name)
-        #stratify_attack_data(name)
-        print('######## Start %s shapelet_transform #####' % name)
-        shapelet_transform(name)
+        print('######## Start %s stratify #####' % name)
+        stratify_attack_data(name)
+        #shapelet_transform(name)
