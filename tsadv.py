@@ -140,18 +140,14 @@ if __name__ == "__main__":
     local_training_period = args.local_train_period  # 5 #1 local training epochs
     adversarial_local_training_period = 5
 
-    # load poisoned dataset:train(784,32,32,3)test(196,32,32,3) mnist,emnist,cifar10
-    print('========================load-poisoned-data==================')
+    # 
     # train_data = np.loadtxt(datadir + dataset +'/'+dataset + '_TRAIN.txt')
     # poisoned_data = np.loadtxt(datadir + args.dataset + '/' + args.dataset + '_attack.txt')
     poisoned_data = load_data(datadir + args.dataset + '/' + args.dataset + '_attack.txt')
     # poisoned_data = poisoned_data[0:30, :]
-    print('attack_data label: ', poisoned_data[:, 0])
     #poisoned_data = torch.tensor(poisoned_data[0:50, :], dtype=torch.float)
     poisoned_data = torch.tensor(poisoned_data, dtype=torch.float)
     num_dps_poisoned_dataset = poisoned_data.shape[0]
-    # poisoned_dataset = poisoned_dataset.data
-    print('attack data shape: ', poisoned_data.shape)
 
     # targetted_task_test_data = np.loadtxt(datadir + args.dataset + '/' + args.dataset + '_TEST.txt')
     targetted_task_test_data = load_data(datadir + args.dataset + '/' + args.dataset + '_TEST.txt')
@@ -169,9 +165,7 @@ if __name__ == "__main__":
 
     seq_len = vanilla_test_data.shape[1] - 1
     n_class = len(np.unique(vanilla_test_data[:, 0]))
-    print('dataset, seq_len, n_class, batchsize', args.dataset, seq_len, n_class, args.batch_size)
     #  train_dataset = TensorDataset(torch.from_numpy(train_data).to(torch.float), torch.from_numpy(train_labels).to(torch.float))
-    # 组合数据和标签
     poisoned_dataset = TensorDataset(poisoned_data[:, 1:], poisoned_data[:, 0])
     targetted_task_test_dataset = TensorDataset(targetted_task_test_data[:, 1:], targetted_task_test_data[:, 0])
     vanilla_test_dataset = TensorDataset(vanilla_test_data[:, 1:], vanilla_test_data[:, 0])
