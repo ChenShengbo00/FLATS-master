@@ -50,4 +50,5 @@ python3.8 tsadv.py
 --fl_mode=fixed-pool
 
 attackmathed = Attacker or AttackerRandShape or AttackerRandAll or AttackerOnepoint
+
 fl_mode=fixed-pool or fixed-freq, and while fl_mode=fixed-freq the attacker_pool_size=1
