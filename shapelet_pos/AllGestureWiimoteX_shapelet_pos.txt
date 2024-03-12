@@ -1,5 +1,0 @@
-AllGestureWiimoteX 14 0 50
-AllGestureWiimoteX 5 53 153
-AllGestureWiimoteX 4 159 259
-AllGestureWiimoteX 4 53 153
-AllGestureWiimoteX 4 0 50

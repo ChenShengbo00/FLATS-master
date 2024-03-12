@@ -1,5 +1,0 @@
-FordA 86 0 50
-FordA 29 53 153
-FordA 28 0 50
-FordA 29 300 500
-FordA 27 159 259

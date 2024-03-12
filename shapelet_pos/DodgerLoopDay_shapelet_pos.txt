@@ -1,5 +1,0 @@
-DodgerLoopDay 5 87 145
-DodgerLoopDay 1 87 145
-DodgerLoopDay 2 216 245
-DodgerLoopDay 2 145 203
-DodgerLoopDay 2 24 82

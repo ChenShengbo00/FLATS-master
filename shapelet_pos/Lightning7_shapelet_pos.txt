@@ -1,5 +1,0 @@
-Lightning7 14 237 301
-Lightning7 27 164 228
-Lightning7 14 141 205
-Lightning7 9 156 220
-Lightning7 15 129 193

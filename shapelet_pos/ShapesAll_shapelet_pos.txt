@@ -1,5 +1,0 @@
-ShapesAll 69 120 325
-ShapesAll 279 121 326
-ShapesAll 281 116 321
-ShapesAll 583 245 450
-ShapesAll 280 131 336

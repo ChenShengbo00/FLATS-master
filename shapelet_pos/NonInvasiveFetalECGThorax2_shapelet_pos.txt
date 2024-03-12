@@ -1,5 +1,0 @@
-NonInvasiveFetalECGThorax2 48 528 603
-NonInvasiveFetalECGThorax2 16 354 504
-NonInvasiveFetalECGThorax2 16 72 222
-NonInvasiveFetalECGThorax2 15 255 330
-NonInvasiveFetalECGThorax2 16 607 682

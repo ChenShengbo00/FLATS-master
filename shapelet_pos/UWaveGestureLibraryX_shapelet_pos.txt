@@ -1,5 +1,0 @@
-UWaveGestureLibraryX 11 219 251
-UWaveGestureLibraryX 4 251 283
-UWaveGestureLibraryX 3 103 135
-UWaveGestureLibraryX 3 283 315
-UWaveGestureLibraryX 3 219 251

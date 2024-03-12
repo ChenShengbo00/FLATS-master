@@ -1,5 +1,0 @@
-TwoPatterns 29 31 57
-TwoPatterns 9 31 57
-TwoPatterns 9 64 90
-TwoPatterns 10 5 31
-TwoPatterns 10 31 57

@@ -1,5 +1,0 @@
-EthanolLevel 29 1252 1428
-EthanolLevel 9 1252 1428
-EthanolLevel 9 614 790
-EthanolLevel 10 1435 1611
-EthanolLevel 10 1252 1428
